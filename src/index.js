@@ -7,13 +7,14 @@ var Template = [
 #yourname一邊吃飯一邊一邊說:
 #yourresponse
 
-只見#friendsname仔眼眶泛紅看起來即將淚崩，一邊哽咽一邊抓著#yourname的衣領對我吼叫：
+只見#friendsname仔眼眶泛紅看起來即將淚崩，一邊哽咽一邊抓著#yourname的衣領對#yourname吼叫：
 #hisresponse
 
 說著#friendsname就坐在地上崩潰大哭，嘴裡還含糊念著：
 #hisresponse
 
-有沒有卦`,
+有沒有卦`
+  ,
   `如提
 
 #yourname今天在#where剛好聊到#what
@@ -40,7 +41,7 @@ var Template = [
 現場氣氛變得很尷尬該怎麼辦
 
 有沒有卦`,
-`如提
+  `如提
 
 今天發現#what
 
