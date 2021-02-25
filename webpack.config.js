@@ -1,7 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const glob = require('glob');
+const glob = require('glob-all');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const PATHS = {
   views: path.resolve(__dirname, 'src'),
@@ -48,7 +48,14 @@ module.exports = {
       whitelistPatternsChildren: function () {
         return [];
       },
-      paths: glob.sync(`${PATHS.views}/**/*`, { nodir: true }),
+      paths: glob.sync(
+        [
+          `${PATHS.views}/**/*`,
+          path.resolve(__dirname, 'node_modules/jquery/dist/jquery.slim.js'),
+          path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.bundle.js')
+        ],
+        { nodir: true }
+      ),
     })
   ],
   module: {

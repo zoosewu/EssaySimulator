@@ -1,4 +1,5 @@
 import './scss/main.scss';
+import 'bootstrap';
 var Template = [
   `#yourname今天跟#friendsname在#where
 
