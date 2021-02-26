@@ -11,76 +11,7 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="my-5"></div>
-    <div class="d-flex flex-row bd-highlight mb-3">
-      <div class="col-6">
-        <div class="d-flex flex-row bd-highlight mb-3">
-          <div class="col-6 px-3">
-            <label for="yourname">如何稱呼你</label>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="yourname" aria-describedby="basic-addon3">
-            </div>
-          </div>
-          <div class="col-6 px-3">
-            <label for="friendsname">如何稱呼你的朋友</label>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="friendsname" aria-describedby="basic-addon3">
-            </div>
-          </div>
-        </div>
-        <div class="px-3">
-          <label for="where">你在哪邊遇到你朋友</label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id="where" aria-describedby="basic-addon3">
-          </div>
-        </div>
-        <div class="px-3">
-          <label for="what">你的朋友關心什麼議題</label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id="what" aria-describedby="basic-addon3">
-          </div>
-        </div>
-        <div class="px-3">
-          <label for="friendthinking">你的朋友對這個議題有什麼評論</label>
-          <div class="input-group mb-3">
-            <textarea id="friendthinking" class="form-control" aria-label="With textarea"></textarea>
-          </div>
-        </div>
-        <div class="px-3">
-          <label for="yourresponse">你如何回應你朋友的評論</label>
-          <div class="input-group mb-3">
-            <textarea id="yourresponse" class="form-control" aria-label="With textarea"></textarea>
-          </div>
-        </div>
-        <div class="px-3">
-          <label for="hisresponse">你的朋友生氣時說了什麼</label>
-          <div class="input-group mb-3">
-            <textarea id="hisresponse" class="form-control" aria-label="With textarea"></textarea>
-          </div>
-        </div>
-        <div class="px-3">
-          <div class="input-group mb-3">
-            <button id="createpost" type="button" class="btn btn-primary">產生文章</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="card px-3 mb-5">
-          <span id="post" class="card-body" style="white-space: pre-line"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <div id="root"></div>
   <script src="./js/bundle.min.js"></script>
 </body>
 

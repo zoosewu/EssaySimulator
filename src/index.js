@@ -1,4 +1,5 @@
 import './scss/main.scss';
+import 'bootstrap';
 var Template = [
   `#yourname今天跟#friendsname在#where
 
@@ -75,7 +76,7 @@ var ReplaceRules = [
   { key: "friendthinking", split: true, Bracket: true },
   { key: "yourresponse", split: true, Bracket: true },
   { key: "hisresponse", split: true, Bracket: true }];
-var Brackets = ["「」", "【】", `""`, "''", "『』", "〔〕",];
+var Brackets = ["「」", "【】", `""`, "''", "『』", "〔〕", "  "];
 function change_title() {
   document.title = '朋友體模擬器';
 }
