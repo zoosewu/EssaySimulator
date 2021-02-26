@@ -76,7 +76,7 @@ var ReplaceRules = [
   { key: "friendthinking", split: true, Bracket: true },
   { key: "yourresponse", split: true, Bracket: true },
   { key: "hisresponse", split: true, Bracket: true }];
-var Brackets = ["「」", "【】", `""`, "''", "『』", "〔〕",];
+var Brackets = ["「」", "【】", `""`, "''", "『』", "〔〕", "  "];
 function change_title() {
   document.title = '朋友體模擬器';
 }

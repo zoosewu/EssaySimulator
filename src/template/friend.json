@@ -1,0 +1,149 @@
+{
+  "title": "朋友體",
+  "inputrule": [
+    {
+      "id": "yourname",
+      "description": "如何稱呼你",
+      "type": "input",
+      "hint": "本肥肥"
+    },
+    {
+      "id": "friendsname",
+      "description": "如何稱呼你的朋友",
+      "type": "input",
+      "hint": "4%仔朋友"
+    },
+    {
+      "id": "where",
+      "description": "你在哪邊遇到你朋友",
+      "type": "input",
+      "hint": "吃午餐"
+    },
+    {
+      "id": "what",
+      "description": "你的朋友關心什麼議題",
+      "type": "input",
+      "hint": "去年台灣的經濟成長是世界數一數二的"
+    },
+    {
+      "id": "friendthinking",
+      "description": "你的朋友對這個議題有什麼評論",
+      "type": "textarea",
+      "options": {
+        "split": true,
+        "bracket": true
+      },
+      "hint": "笑死...還不是學阿北的\n阿北早就畫好三角形了，還可以跟共產黨當朋友...\n綠共菸畜蟑螂還在大內宣笑死..."
+    },
+    {
+      "id": "yourresponse",
+      "description": "你如何回應你朋友的評論",
+      "type": "textarea",
+      "options": {
+        "split": true,
+        "bracket": true
+      },
+      "hint": "我覺得近幾年政府做得很不錯啊\n不管執政的是誰，台灣經濟成長佳都值得鼓勵吧"
+    },
+    {
+      "id": "hisresponse",
+      "description": "你的朋友生氣時說了什麼",
+      "type": "textarea",
+      "options": {
+        "split": true,
+        "bracket": true
+      },
+      "hint": "台灣人真可憐哪...\n被綠共菜陰魂騙的團團轉，台灣經濟變好還不是靠共產黨施捨的\n一邊賺大陸給的善意一邊搞台獨是不是有病啊柯黑台獨狗...\n連一國兩制都不接受還想拿中國給的施捨笑死...\n綠畜吱障到底在爽什麼啊...笑死..."
+    }
+  ],
+  "template": [
+    [
+      "#yourname今天跟#friendsname在#where",
+      "",
+      "剛好聽到旁邊的人在講#what",
+      "",
+      "#yourname一邊吃飯一邊一邊說:",
+      "#yourresponse",
+      "",
+      "只見#friendsname仔眼眶泛紅看起來即將淚崩，一邊哽咽一邊抓著#yourname的衣領對#yourname吼叫：",
+      "#hisresponse",
+      "",
+      "說著#friendsname就坐在地上崩潰大哭，嘴裡還含糊念著：",
+      "#hisresponse",
+      "",
+      "有沒有卦`"
+    ],
+    [
+      "如提",
+      "",
+      "#yourname今天在#where剛好聊到#what",
+      "",
+      "#yourname開玩笑跟#friendsname說:",
+      "#yourresponse",
+      "",
+      "結果#friendsname不知道是不是反應過度",
+      "",
+      "直接把手上的碗往#yourname的方向丟過來",
+      "",
+      "而且眼眶泛淚、面紅耳赤、神情激動的敲桌子",
+      "",
+      "語帶哽咽的咆嘯:",
+      "#hisresponse",
+      "",
+      "接著就抓起#yourname的衣領一邊對#yourname扣帽子一邊翻開#yourname的口袋",
+      "#hisresponse",
+      "",
+      "#friendsname突然這樣大鬧害#yourname不知道該講什麼",
+      "",
+      "大家都看著#friendsname好像快哭了",
+      "",
+      "現場氣氛變得很尷尬該怎麼辦",
+      "",
+      "有沒有卦"
+    ],
+    [
+      "如提",
+      "",
+      "今天發現#what",
+      "",
+      "#yourname也感到與有榮焉",
+      "",
+      "但是#friendsname卻開始酸言酸語唱衰詛咒:",
+      "#friendthinking",
+      "",
+      "#yourname跟#friendsname說:",
+      "#yourresponse",
+      "",
+      "結果還沒等#yourname講玩，#friendsname直接一拳灌到#yourname臉上",
+      "",
+      "面紅耳赤而且眼眶泛淚對#yourname怒吼:",
+      "#hisresponse",
+      "",
+      "#yourname看#friendsname反應這麼大真的嚇到了",
+      "",
+      "#friendsname現在好像氣到快哭了",
+      "",
+      "#yourname該怎麼辦",
+      "",
+      "有沒有卦",
+      ""
+    ],
+    [
+      "如題",
+      "",
+      "#yourname剛剛#where看到新聞說#what",
+      "",
+      "結果#friendsname看到了就酸溜溜的說：",
+      "#hisresponse",
+      "",
+      "說著話鋒一轉，開始嘲諷詛咒#yourname：",
+      "#hisresponse",
+      "",
+      "#yourname也不想跟#friendsname吵了",
+      "",
+      "想問一下為什麼#what，#friendsname這麼氣",
+      "",
+      "有沒有卦"
+    ]
+  ]
+}
