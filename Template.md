@@ -1,10 +1,10 @@
-#模板規則
+# 模板規則
 
 這邊定義了src/template內資料夾的json定義，固定的檔案有```templates.json```以及```brackets.json```。
 剩下的都是自訂的模板檔案。
 實際使用時可以直接複製專案內的模板後，再進行修改。有不清楚的地方再來這邊參考。
 
-##templates.json
+## templates.json
 
 這邊定義了專案內部有哪些可以用文體模板。
 使用的變數意義如下:
@@ -30,7 +30,7 @@ displayname:顯示在Header的名稱
   }
 ]
 ```
-##friend.json
+## friend.json
 文體模板，這邊定義了這個文體有哪些輸入欄位以及文字模板，檔案名稱必須與```templates.json```內的filename相同。
 使用的變數意義如下:
 ```
@@ -84,7 +84,7 @@ template:套用的模板文字
  ],
 ]
 ```
-####id欄位
+#### id欄位
 
 id欄位盡量使用全小寫英文，並且盡量避免重複。
 
@@ -95,7 +95,7 @@ id:companyceo -> XX公司執行長
 ```
 這樣#companyceo有可能會是```"#companyceo" -> XX公司執行長```或是```"#company"ceo -> XX股份有限公司ceo```
 
-####inputrule-options-split欄位
+#### inputrule-options-split欄位
 
 多行文字是否要分割隨機分配給所有內容
 ```
@@ -134,7 +134,7 @@ template:
 文章第四行
 ```
 
-####template欄位
+#### template欄位
 
 文章模板，以陣列表示一篇文章，每行都是一個元素。
 文章內的#id之後都會被使用者輸入的文字取代。
@@ -154,5 +154,5 @@ template:
 　],
 ]
 ```
-##brackets.json
+## brackets.json
 這邊定義了有哪些可以用的行首級行尾
