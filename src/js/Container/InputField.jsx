@@ -26,7 +26,7 @@ const InputField = ({ filename }) => {
       return updatedInputDatas;
     });
   }
-  console.log(title, inputItems, postTemplates, inputDatas, post);
+  // console.log(title, inputItems, postTemplates, inputDatas, post);
 
   const postClasses = post && post.length > 0 ? "card-body" : "";
   return (
