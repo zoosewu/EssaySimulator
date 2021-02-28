@@ -7,6 +7,7 @@ Let everone easily to create post with  specific essay
 ## 如何自己製作文體
 
 1.fork專案到自己的github底下
+
 2.在```src/template/```內修改或新增自己想要的文體，詳細定義可以參考[這邊](https://github.com/zoosewu/EssaySimulator/blob/main/Template.md)。
 
 ## 贊助
