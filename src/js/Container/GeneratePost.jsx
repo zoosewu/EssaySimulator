@@ -36,7 +36,7 @@ function ReplaceText(post, inputDatas) {
       newpost = ReplaceTextWithKey(newpost, key, input);
     }
   }
-  console.log("ReplaceText", post, inputDatas, newpost);
+  // console.log("ReplaceText", post, inputDatas, newpost);
   return newpost;
 }
 function ReplaceTextWithKeySplit(post, replaceKey, newtext) {
@@ -48,7 +48,7 @@ function ReplaceTextWithKeySplit(post, replaceKey, newtext) {
     newpost = newpost.replace(key, NewTextArray[index]);
     console.log("replace", key, "->", NewTextArray[index]);
   }
-  console.log("ReplaceTextWithKeySplit", replaceKey, newtext, newpost);
+  // console.log("ReplaceTextWithKeySplit", replaceKey, newtext, newpost);
   return newpost;
 }
 function GetSplitCount(post, key) {
@@ -101,6 +101,7 @@ function GetIntArrayRandomly(max, count) {
     if (IntArray.indexOf(newint) === -1)
       IntArray.push(newint + 1)
   }
+  console.log("GetIntArrayRandomly", max, count, IntArray.sort());
   return IntArray.sort();
 }
 function getRandomInt(max) {
