@@ -3,11 +3,16 @@ const GeneratePost = (inputDatas, postTemplates) => {
   const template = GetTemplate(postTemplates);
   return ReplaceText(template, inputDatas);
 }
-function GetTemplate(postTemplates) {
-  var template = postTemplates[getRandomInt(postTemplates.length)];
-  return template.join('\n');
+function GetTemplate (postTemplates) {
+  let template = ""
+  for (let index = 0; index < postTemplates.length; index++) {
+    const element = postTemplates[index];
+    console.log(GetTemplate, index, element);
+    template += element[getRandomInt(element.length)].join('\n') + '\n';
+  }
+  return template;
 }
-function AddBracket(input, Bracket) {
+function AddBracket (input, Bracket) {
   if (Bracket && Bracket.length > 2) {
     const PreBracket = Bracket.charAt(0);
     const PostBracket = Bracket.charAt(1);
@@ -16,10 +21,10 @@ function AddBracket(input, Bracket) {
   else
     return input;
 }
-function GetRandomBracket() {
+function GetRandomBracket () {
   return Brackets[getRandomInt(Brackets.length)];
 }
-function ReplaceText(post, inputDatas) {
+function ReplaceText (post, inputDatas) {
   let newpost = post;
   const bracket = GetRandomBracket();
   for (let index = 0; index < inputDatas.inputrule.length; index++) {
@@ -39,7 +44,7 @@ function ReplaceText(post, inputDatas) {
   // console.log("ReplaceText", post, inputDatas, newpost);
   return newpost;
 }
-function ReplaceTextWithKeySplit(post, replaceKey, newtext) {
+function ReplaceTextWithKeySplit (post, replaceKey, newtext) {
   let newpost = post;
   const key = "#" + replaceKey;
   const splitcount = GetSplitCount(post, key);
@@ -51,14 +56,14 @@ function ReplaceTextWithKeySplit(post, replaceKey, newtext) {
   // console.log("ReplaceTextWithKeySplit", replaceKey, newtext, newpost);
   return newpost;
 }
-function GetSplitCount(post, key) {
+function GetSplitCount (post, key) {
   let match = post.match(new RegExp(key, "g"));
   if (match)
     return match.length;
   else
     return 0;
 }
-function SplitText(text, outputCount) {
+function SplitText (text, outputCount) {
   const textarray = [];
   const textes = text.split('\n');
   const SplitArray = GetRandomArray(textes.length, outputCount - 1);
@@ -76,12 +81,12 @@ function SplitText(text, outputCount) {
   console.log("SplitText", text, outputCount, textarray);
   return textarray;
 }
-function ReplaceTextWithKey(post, replaceKey, newtext) {
+function ReplaceTextWithKey (post, replaceKey, newtext) {
   const key = "#" + replaceKey;
   console.log("ReplaceTextWithKey", "replaceAll", key, "->", newtext);
   return post.replaceAll(key, newtext);
 }
-function GetRandomArray(max, count) {
+function GetRandomArray (max, count) {
   if (max <= count) {
     return GetIntArray(count);
   }
@@ -89,12 +94,12 @@ function GetRandomArray(max, count) {
     return GetIntArrayRandomly(max, count);
   }
 }
-function GetIntArray(count) {
+function GetIntArray (count) {
   const IntArray = [];
   for (let i = 0; i < count; i++) { IntArray.push(i); }
   return IntArray;
 }
-function GetIntArrayRandomly(max, count) {
+function GetIntArrayRandomly (max, count) {
   const IntArray = [];
   while (IntArray.length < count) {
     const newint = getRandomInt(max - 1);
@@ -104,7 +109,7 @@ function GetIntArrayRandomly(max, count) {
   console.log("GetIntArrayRandomly", max, count, IntArray.sort());
   return IntArray.sort();
 }
-function getRandomInt(max) {
+function getRandomInt (max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 export default GeneratePost;

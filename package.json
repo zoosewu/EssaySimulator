@@ -1,6 +1,6 @@
 {
   "name": "essay-simulator",
-  "version": "0.1.1",
+  "version": "1.2.0",
   "author": "Zoosewu",
   "description": "Let everone easily to create post with specific essay.",
   "keywords": [
@@ -31,6 +31,7 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.0",
+    "eslint": "^7.26.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "react": "^17.0.1",
