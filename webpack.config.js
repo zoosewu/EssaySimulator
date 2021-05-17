@@ -88,9 +88,15 @@ module.exports = {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new webpack.DllReferencePlugin({
-      manifest: require('./Vendor/Vendor_manifest.json')
+      manifest: require('./docs/Vendor_manifest.json')
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        './css/*',
+        './js/*',
+        './index.html'
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/index.css'
     }),
