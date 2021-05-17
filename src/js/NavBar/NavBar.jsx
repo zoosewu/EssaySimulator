@@ -1,9 +1,36 @@
-import React from "react";
-import HeaderNavItem from "./HeaderNavItem.jsx";
+import React from 'react'
+import PropTypes from 'prop-types'
+import HeaderNavItem from './HeaderNavItem.jsx'
+import UploadCustomEssay from './UploadCustomEssay.jsx'
+import { useCustomEssay } from '../../customEssayContext.jsx'
 const NavBar = ({ templates }) => {
-  const navitems = templates.map(
-    function ({ displayname, filename }) { console.log(displayname, filename); return <HeaderNavItem displayName={displayname} key={filename} name={filename} /> }
-  );
+  const { state } = useCustomEssay()
+  const { useState, useEffect } = React
+  const [navItem, setNavItem] = useState([])
+  useEffect(() => {
+    setNavItem(templates.map(
+      function ({ displayname, filename }, index) { return <HeaderNavItem displayName={displayname} key={index} name={filename} /> }
+    ))
+    setTimeout(() => {
+      const $ = require('jquery')
+      $('#friend-tab').tab('show')
+    }, 50)
+  }, [])
+  useEffect(() => {
+    const { customEssay } = state
+    if (customEssay.title === '') return
+    setNavItem(prevNavItem => {
+      const newNavItem = <HeaderNavItem displayName={customEssay.title} key={prevNavItem.length} name={customEssay.title} />
+      console.log(newNavItem)
+      return prevNavItem.concat(newNavItem)
+    })
+    // const $ = require('jquery')
+    // $('#custom-essay-tab').tab('show')
+    setTimeout(() => {
+      const $ = require('jquery')
+      $('#' + customEssay.title + '-tab').tab('show')
+    }, 50)
+  }, [state])
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">文體產生器</a>
@@ -12,14 +39,14 @@ const NavBar = ({ templates }) => {
       </button>
       <div className="collapse navbar-collapse">
         <ul className="nav navbar-nav mr-auto" id="tab">
-          {navitems}
+          {navItem}
         </ul>
-        <form className="form-inline">
-          <input className="form-control mr-sm-2" type="search" placeholder="還不能用" aria-label="Search"></input>
-          <button className="btn btn-outline-info my-2 my-sm-0" type="submit" role="tab" aria-controls="custome" aria-label="" selected={false}>載入自訂模板</button>
-        </form>
+        <UploadCustomEssay />
       </div>
-    </nav>
-  );
+    </nav >
+  )
 }
-export default NavBar;
+NavBar.propTypes = {
+  templates: PropTypes.array
+}
+export default NavBar
