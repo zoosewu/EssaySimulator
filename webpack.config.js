@@ -1,24 +1,98 @@
-const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const glob = require('glob-all');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
+const webpack = require('webpack')
+const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const glob = require('glob-all')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 const PATHS = {
-  views: path.resolve(__dirname, 'src'),
-};
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+  views: path.resolve(__dirname, 'src')
+}
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// eslint-disable-next-line no-unused-vars
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+// eslint-disable-next-line no-unused-vars
+const smp = new SpeedMeasurePlugin()
 
 module.exports = {
   entry: ['./src/app.jsx'],
   output: {
     path: path.join(__dirname, 'docs'),
-    filename: './js/bundle.min.js'
+    filename: './js/bundle.min.js',
+    library: '_dll_[name]'
+  },
+  module: {
+    rules: [
+      {
+        test: /.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react'],
+            cacheDirectory: true
+          }
+        }
+      },
+
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            cacheDirectory: true
+          }
+        }
+      },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: function () {
+                  return [
+                    require('autoprefixer'),
+                    require('cssnano')({ preset: ['default', { discardComments: { removeAll: true } }] })
+                  ]
+                }
+              }
+            }
+          },
+          'sass-loader'
+        ]
+      }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        },
+        extractComments: false
+      })
+    ]
   },
   plugins: [
+    // new BundleAnalyzerPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: require('./Vendor/Vendor_manifest.json')
+    }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: './css/index.css',
+      filename: 'css/index.css'
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -40,13 +114,13 @@ module.exports = {
     }),
     new PurgecssPlugin({
       whitelist: function () {
-        return [];
+        return []
       },
       whitelistPatterns: function () {
-        return [];
+        return []
       },
       whitelistPatternsChildren: function () {
-        return [];
+        return []
       },
       paths: glob.sync(
         [
@@ -55,64 +129,7 @@ module.exports = {
           path.resolve(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.bundle.js')
         ],
         { nodir: true }
-      ),
+      )
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /.jsx$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: { presets: ['@babel/preset-react'] }
-        }
-      },
-
-      {
-        test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader
-          },
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: function () {
-                  return [
-                    require('autoprefixer'),
-                    require('cssnano')({ preset: ['default', { discardComments: { removeAll: true } }] })
-                  ];
-                }
-              }
-            }
-          },
-          'sass-loader'
-        ]
-      }
-    ]
-  },
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false
-          }
-        },
-        extractComments: false
-      })
-    ]
-  }
-};
+  ]
+}

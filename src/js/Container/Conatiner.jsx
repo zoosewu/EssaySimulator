@@ -1,16 +1,53 @@
-import React from "react";
-import InputField from "./InputField.jsx";
-const NavBar = ({ templates }) => {
-  const inputDatas = {};
-  const Essays = templates.map(function ({ filename }) { return <InputField filename={filename} key={filename} /> });
+import React from 'react'
+import PropTypes from 'prop-types'
+import InputField from './InputField.jsx'
+import { useCustomEssay } from '../../customEssayContext.jsx'
+const Conatiner = ({ templates }) => {
+  const { state } = useCustomEssay()
+  const { useState, useEffect } = React
+  const [essays, setEssays] = useState([])
+  useEffect(() => {
+    templates.forEach(({ filename }) => {
+      import('../../template/' + filename + '.json').then(Essay => {
+        setEssays(prevEssays => {
+          return prevEssays.concat(
+            <div className="tab-pane fade" id={filename} role="tabpanel" aria-labelledby={filename + '-tab'} key={Essay.title}>
+              <InputField Essay={Essay} />
+            </div>
+          )
+        })
+      })
+    })
+    // setEssays(prevEssays => {
+    //   return prevEssays.concat(
+    //     <div className="tab-pane fade" id="custom-essay" role="tabpanel" aria-labelledby="custom-essay-tab" key="customEssay">
+    //       <InputField Essay={state.customEssay} />
+    //     </div>
+    //   )
+    // })
+  }, [])
+  useEffect(() => {
+    const { customEssay } = state
+    if (customEssay.title === '') return
+    setEssays(prevEssays => {
+      return prevEssays.concat(
+        <div className="tab-pane fade" id={customEssay.title} role="tabpanel" aria-labelledby={customEssay.title + '-tab'} key={customEssay.title}>
+          <InputField Essay={customEssay} />
+        </div>
+      )
+    })
+  }, [state])
   return (
-    <main role="main" style={{ minHeight: "850px" }}>
+    <main role="main" style={{ minHeight: '850px' }}>
       <div className="container-fluid" >
         <div className="tab-content my-3" id="tabContent">
-          {Essays}
+          {essays}
         </div>
       </div>
     </main>
-  );
+  )
 }
-export default NavBar;
+Conatiner.propTypes = {
+  templates: PropTypes.array
+}
+export default Conatiner
