@@ -10,6 +10,8 @@ Let everone easily to create post with  specific essay
 
 2.在```src/template/```內修改或新增自己想要的文體，詳細定義可以參考[這邊](https://github.com/zoosewu/EssaySimulator/blob/main/Template.md)。
 
+3.建議下載```src/template/emptytemplate.json```再修改。
+
 ## 贊助
 
 如果你覺得這個套件好用，歡迎[點我](https://qr.opay.tw/eZHf2)贊助或使用下方QR Code。
