@@ -1,7 +1,9 @@
 # 模板規則
 
 這邊定義了src/template內資料夾的json定義，固定的檔案有```templates.json```以及```brackets.json```。
-剩下的都是自訂的模板檔案。
+
+其餘的是自訂的模板檔案。
+
 實際使用時可以直接複製專案內的模板後，再進行修改。有不清楚的地方再來這邊參考。
 
 ## templates.json
@@ -9,8 +11,8 @@
 這邊定義了專案內部有哪些可以用文體模板。
 使用的變數意義如下:
 ```
-filename:在template資料夾內的檔案名稱如filename.json
-displayname:顯示在Header的名稱
+filename: 在template資料夾內的檔案名稱如filename.json
+displayname: 顯示在Header的名稱
 ```
 範例:
 ```
@@ -30,20 +32,23 @@ displayname:顯示在Header的名稱
   }
 ]
 ```
-## friend.json
+## 自訂.json
 文體模板，這邊定義了這個文體有哪些輸入欄位以及文字模板，檔案名稱必須與```templates.json```內的filename相同。
+上傳的自訂模板也是使用這邊的規則。
+建議下載```src/template/emptytemplate.json```再修改。
+
 使用的變數意義如下:
 ```
-title:文體標題，會顯示在葉面中央上方
-inputrule:輸入的欄位規則，網頁會根據inputrule產生欄位給使用者輸入
-inputrule-id:欄位辨識用的ID，會取代文章內的#id。
-inputrule-description:文章的描述，會告訴使用者這個欄位該輸入什麼
-inputrule-type:欄位類別，可以使用1.input單行輸入 2.textarea多行輸入
-inputrule-options:其他選項
-inputrule-options-split:是否分割，如果文章內出現很多次則會把多行文字切割後隨機分配
-inputrule-options-bracket:是否適用前後括號，如果設定為true的話每行行首及行尾都會加上括號
-inputrule-hint:欄位的提示用文字
-template:套用的模板文字
+title: 文體標題，會顯示在葉面中央上方
+inputrule: 輸入的欄位規則，網頁會根據inputrule產生欄位給使用者輸入
+inputrule-id: 欄位辨識用的ID，會取代文章內的#id。
+inputrule-description: 文章的描述，會告訴使用者這個欄位該輸入什麼
+inputrule-type: 欄位類別，可以使用1.input單行輸入 2.textarea多行輸入
+inputrule-options: 其他選項
+inputrule-options-split: 是否分割，如果文章內出現很多次則會把多行文字切割後隨機分配
+inputrule-options-bracket: 是否適用前後括號，如果設定為true的話每行行首及行尾都會加上括號
+inputrule-hint: 欄位的提示用文字
+template: 套用的模板文字
 ```
 範例:
 ```
@@ -244,3 +249,4 @@ template:
 ```
 ## brackets.json
 這邊定義了有哪些可以用的行首及行尾
+如果多行輸出並且```inputrule-options-bracket:true```的話，會幫每一行加上引號。
