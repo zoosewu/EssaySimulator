@@ -11,10 +11,6 @@ const NavBar = ({ templates }) => {
     setNavItem(templates.map(
       function ({ displayname, filename }, index) { return <HeaderNavItem displayName={displayname} key={index} name={filename} /> }
     ))
-    setTimeout(() => {
-      const $ = require('jquery')
-      $('#friend-tab').tab('show')
-    }, 50)
   }, [])
   useEffect(() => {
     const { customEssay } = state
@@ -24,8 +20,6 @@ const NavBar = ({ templates }) => {
       console.log(newNavItem)
       return prevNavItem.concat(newNavItem)
     })
-    // const $ = require('jquery')
-    // $('#custom-essay-tab').tab('show')
     setTimeout(() => {
       const $ = require('jquery')
       $('#' + customEssay.title + '-tab').tab('show')
