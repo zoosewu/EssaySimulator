@@ -9,6 +9,7 @@ const Conatiner = ({ templates }) => {
   useEffect(() => {
     templates.forEach(({ filename }) => {
       import('../../template/' + filename + '.json').then(Essay => {
+        console.log('import', filename)
         setEssays(prevEssays => {
           return prevEssays.concat(
             <div className="tab-pane fade" id={filename} role="tabpanel" aria-labelledby={filename + '-tab'} key={Essay.title}>
@@ -18,13 +19,6 @@ const Conatiner = ({ templates }) => {
         })
       })
     })
-    // setEssays(prevEssays => {
-    //   return prevEssays.concat(
-    //     <div className="tab-pane fade" id="custom-essay" role="tabpanel" aria-labelledby="custom-essay-tab" key="customEssay">
-    //       <InputField Essay={state.customEssay} />
-    //     </div>
-    //   )
-    // })
   }, [])
   useEffect(() => {
     const { customEssay } = state
