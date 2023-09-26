@@ -6,22 +6,27 @@ const Conatiner = ({ templates }) => {
   const { state } = useCustomEssay()
   const { useState, useEffect } = React
   const [essays, setEssays] = useState([])
+  const [isInit, setIsInit] = useState(false)
   useEffect(() => {
-    const getDefaultEssays = () => {
-      templates.forEach(({ filename }) => {
-        import('../../template/' + filename + '.json').then(Essay => {
-          console.log('import', filename)
-          setEssays(prevEssays => {
-            return prevEssays.concat(
-              <div className="tab-pane fade" id={filename} role="tabpanel" aria-labelledby={filename + '-tab'} key={Essay.title}>
-                <InputField Essay={Essay} />
-              </div>
-            )
-          })
+    templates.forEach(({ filename }) => {
+      import('../../template/' + filename + '.json').then(Essay => {
+        setEssays(prevEssays => {
+          return prevEssays.concat(
+            <div className="tab-pane fade" id={filename} role="tabpanel" aria-labelledby={filename + '-tab'} key={Essay.title}>
+              <InputField Essay={Essay} />
+            </div>
+          )
         })
+        if (!isInit) {
+          const $ = require('jquery')
+          const friendTab = $('#friend-tab')
+          if (friendTab) {
+            setIsInit(true)
+            friendTab.tab('show')
+          }
+        }
       })
-    }
-    getDefaultEssays()
+    })
   }, [])
   useEffect(() => {
     const { customEssay } = state
@@ -34,7 +39,6 @@ const Conatiner = ({ templates }) => {
       )
     })
   }, [state])
-  console.log('render')
   return (
     <main role="main" style={{ minHeight: '850px' }}>
       <div className="container-fluid" >
