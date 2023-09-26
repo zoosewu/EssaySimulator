@@ -21,8 +21,9 @@ const Conatiner = ({ templates }) => {
         if (!isInit) {
           const $ = require('jquery')
           const friendTab = $('#friend-tab')
-          console.log('not init', isInit, friendTab)
-          if (friendTab) {
+          const friend = $('#friend')
+          console.log('not init', isInit, friend, friendTab)
+          if (friendTab && friend) {
             setIsInit(true)
             console.log('Init!!', isInit)
             friendTab.tab('show')
