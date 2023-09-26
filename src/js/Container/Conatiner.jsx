@@ -17,11 +17,14 @@ const Conatiner = ({ templates }) => {
             </div>
           )
         })
+        console.log('add essay', Essay.title, Essay)
         if (!isInit) {
           const $ = require('jquery')
           const friendTab = $('#friend-tab')
+          console.log('not init', isInit, friendTab)
           if (friendTab) {
             setIsInit(true)
+            console.log('Init!!', isInit)
             friendTab.tab('show')
           }
         }
