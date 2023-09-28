@@ -23,9 +23,17 @@ const InputField = (input) => {
     setInputDatas(prevInputDatas => {
       const updatedInputDatas = { ...prevInputDatas }
       updatedInputDatas[key] = value
-      // console.log(key, value, updatedInputDatas, prevInputDatas);
+      // console.log(key, value, updatedInputDatas);
       return updatedInputDatas
     })
+  }
+  const GetHintData = () => {
+    const data = { inputrule }
+    for (const rule of inputrule) {
+      data[rule.id] = rule.hint
+    }
+    // console.log(data);
+    return data
   }
   // console.log(title, inputItems, postTemplates, inputDatas, post);
 
@@ -38,7 +46,8 @@ const InputField = (input) => {
           {inputItems}
           <div className="px-3">
             <div className="input-group mb-3">
-              <button type="button" className="btn btn-primary" onClick={() => setPost(GeneratePost(inputDatas, postTemplates))}>產生文章</button>
+              <button type="button" className="btn btn-primary mr-3" onClick={() => setPost(GeneratePost(inputDatas, postTemplates))}>產生文章</button>
+              <button type="button" className="btn btn-success mr-3" onClick={() => setPost(GeneratePost(GetHintData(), postTemplates))}>產生範例文章</button>
             </div>
           </div>
         </div>
